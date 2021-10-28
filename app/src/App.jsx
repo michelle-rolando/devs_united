@@ -37,9 +37,8 @@ export default function App() {
   const handleChange = (e) => {
     let nuevoTweet = {
       ...tweet,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value 
     };
-
     setTweet(nuevoTweet);
   };
 
@@ -88,6 +87,7 @@ export default function App() {
           <input
             name="autor"
             onChange={handleChange}
+            //si hay un usuario logeado, que muestre el autor
             value={tweet.autor}
             type="text"
             placeholder="persona autora"
