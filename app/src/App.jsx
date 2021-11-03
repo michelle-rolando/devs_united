@@ -8,7 +8,9 @@ export default function App() {
   const [tweets, setTweets] = useState([]);
   const [tweet, setTweet] = useState({
     tweet: "",
-    autor: ""
+    autor: "",
+    uid: "",
+    mail: ""
   });
   const [user, setUser] = useState(null);
 
@@ -21,7 +23,9 @@ export default function App() {
             tweet: doc.data().tweet,
             autor: doc.data().autor,
             id: doc.id,
-            likes: doc.data().likes
+            likes: doc.data().likes,
+            email: doc.data().email,
+            uid: doc.data().uid
           };
         });
         setTweets(tweets);
@@ -36,8 +40,10 @@ export default function App() {
 
   const handleChange = (e) => {
     let nuevoTweet = {
-      ...tweet,
-      [e.target.name]: e.target.value 
+      tweet: e.target.value,
+      uid: user.uid,
+      email: user.email,
+      autor: user.displayName
     };
     setTweet(nuevoTweet);
   };
@@ -103,6 +109,7 @@ export default function App() {
               <div className="tweet-info">
                 <p>{tweet.tweet}</p>
                 <p className="tweet-autor">por: {tweet.autor}</p>
+                <p className="tweet-autor" >{tweet.email}</p>
               </div>
               <div className="acciones">
                 <span onClick={() => deleteTweet(tweet.id)} className="delete">
