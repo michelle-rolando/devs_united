@@ -90,14 +90,14 @@ export default function App() {
           placeholder="escribe un tweet..."
         />
         <div className="input-group">
-          <input
+          {/* <input
             name="autor"
             onChange={handleChange}
             //si hay un usuario logeado, que muestre el autor
             value={tweet.autor}
             type="text"
             placeholder="persona autora"
-          />
+          /> */}
           <button onClick={sendTweet}>Enviar tweet</button>
         </div>
       </form>
@@ -112,9 +112,11 @@ export default function App() {
                 <p className="tweet-autor" >{tweet.email}</p>
               </div>
               <div className="acciones">
+                {user && tweet.uid === user.uid && 
                 <span onClick={() => deleteTweet(tweet.id)} className="delete">
                   borrar
                 </span>
+                }
                 <span
                   onClick={() => likeTweet(tweet.id, tweet.likes)}
                   className="likes"
